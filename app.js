@@ -9,8 +9,22 @@ const TOTAL_GOAL = 315; // Sum of 10+11+12+...+30
 function initApp() {
     loadProgress();
     updateUI();
+    setupEventListeners();
     requestNotificationPermission();
     checkDailyReminder();
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    const markDoneBtn = document.getElementById('markDoneBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    
+    if (markDoneBtn) {
+        markDoneBtn.addEventListener('click', markDayAsSaved);
+    }
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetProgress);
+    }
 }
 
 // Load progress from localStorage
@@ -74,10 +88,12 @@ function updateUI() {
         markDoneBtn.textContent = '✓ Already Saved Today';
         markDoneBtn.disabled = true;
         markDoneBtn.style.opacity = '0.6';
+        markDoneBtn.style.cursor = 'not-allowed';
     } else {
         markDoneBtn.textContent = '✓ Saved Today';
         markDoneBtn.disabled = false;
         markDoneBtn.style.opacity = '1';
+        markDoneBtn.style.cursor = 'pointer';
     }
 
     // Check if completed
@@ -165,12 +181,8 @@ function sendBrowserNotification(title, message) {
     }
 }
 
-// Event listeners
-document.getElementById('markDoneBtn').addEventListener('click', markDayAsSaved);
-document.getElementById('resetBtn').addEventListener('click', resetProgress);
-
 // Initialize app on load
-window.addEventListener('load', initApp);
+document.addEventListener('DOMContentLoaded', initApp);
 
 // Check for daily reminder when page becomes visible
 document.addEventListener('visibilitychange', () => {
