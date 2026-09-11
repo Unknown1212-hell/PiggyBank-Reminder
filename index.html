@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggybank Reminder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐷 Piggybank Saver</h1>
+            <p class="subtitle">Save daily, reach your goal!</p>
+        </div>
+
+        <div class="main-content">
+            <div class="day-display">
+                <div class="day-info">
+                    <span class="label">Day</span>
+                    <span class="day-number" id="dayNumber">1</span>
+                    <span class="label">of 21</span>
+                </div>
+            </div>
+
+            <div class="amount-display">
+                <span class="label">Today's Amount</span>
+                <div class="amount-box">
+                    <span class="currency">$</span>
+                    <span class="amount" id="todayAmount">10</span>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">1/21 days completed</span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" id="markDoneBtn">✓ Saved Today</button>
+                <button class="btn btn-secondary" id="resetBtn">Reset Progress</button>
+            </div>
+
+            <div class="total-box">
+                <span class="label">Total Saved (Goal)</span>
+                <div class="total-amount">$<span id="totalAmount">0</span> / $315</div>
+            </div>
+        </div>
+
+        <div class="notification-box" id="notificationBox" style="display: none;">
+            <div class="notification-content">
+                <span class="notification-icon">🔔</span>
+                <span class="notification-text" id="notificationText"></span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>💡 How it works</h3>
+            <ul>
+                <li>Save $10 on Day 1, $11 on Day 2, and so on...</li>
+                <li>Continue for 21 days until you reach Day 30 (max amount)</li>
+                <li>Click "Saved Today" when you've made your daily deposit</li>
+                <li>Total goal: $315</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
